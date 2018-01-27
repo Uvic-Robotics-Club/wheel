@@ -1,0 +1,6 @@
+float64 motor_1_velocity
+float64 motor_2_velocity
+float64 motor_3_velocity
+float64 motor_4_velocity
+float64 motor_5_velocity
+float64 motor_6_velocity
