@@ -116,21 +116,30 @@ bool USBMotor::checkData(){
 }
 
 void USBMotor::setVelocity(int vel=0){
+  static uint8_t temp = 0;
+  temp=0;
   if(vel >= 0){
     vel  = (vel>255 ? 255 : vel);
+    temp = vel;
     data_to_write.push_back(0);
-    data_to_write.push_back((uint8_t)vel);
+    data_to_write.push_back(temp);
   }
   if(vel < 0){
     vel = abs(vel);
     vel  = (vel>255 ? 255 : vel);
+    temp = vel;
     data_to_write.push_back(1);
-    data_to_write.push_back((uint8_t)vel);
+    data_to_write.push_back(temp);
   }
+  ROS_INFO("tying to push back the data of %d",vel);
 }
 
 void USBMotor::sendData(){
+
+  //ROS_INFO_STREAM("The size of data_to_write is " << data_to_write.size());
   if(ser.isOpen() && !data_to_write.empty()){
-    ser.write(data_to_write);
+    ROS_INFO_STREAM("amount of data written was " << ser.write(data_to_write));
+    data_to_write.clear();
   }
+
 }

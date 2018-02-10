@@ -30,7 +30,8 @@ catkin_package()
 add_executable(joy_to_motor_teleop src/joy_to_motor_teleop.cpp)
 target_link_libraries(joy_to_motor_teleop ${catkin_LIBRARIES})
 
-
+add_executable(prog_to_motor_teleop src/prog_to_motor_teleop.cpp)
+target_link_libraries(prog_to_motor_teleop ${catkin_LIBRARIES})
 
 add_executable(
   direct_usb_motor_control

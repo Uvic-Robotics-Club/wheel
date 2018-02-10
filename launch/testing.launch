@@ -1,10 +1,12 @@
 <launch>
 
     <node pkg="wheel" name="joy2dmc" type="joy_to_motor_teleop" respawn="true" />
-    <node pkg="joy" name="xbox_joystick" type="joy_node" respawn="true" >
+    <node pkg="joy" name="xbox_joystick" type="joy_node" respawn="false" >
       <remap from="joy" to="wheel_joy" />
     </node>
-    <node pkg="wheel" name="wheel_dmc" type="direct_usb_motor_control" required="true" />
+    <node pkg="wheel" name="wheel_dmc" type="direct_usb_motor_control" required="true">
+	<param name="output_type" value="virtual" />
+    </node>
     <!--node pkg="wheel" name="dmc" type="direct_motor_control" respawn="true" >
       <param name="output_type" value="virtual" />
     </node>

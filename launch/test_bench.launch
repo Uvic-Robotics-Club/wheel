@@ -1,0 +1,18 @@
+<launch>
+
+    <node pkg="rosserial_python" name="serial_node_1" type="serial_node.py" respawn="true">
+        <param name="port" value="/dev/ttyUSB0" />
+    </node>
+    <node pkg="rosserial_python" name="serial_node_2" type="serial_node.py" respawn="true">
+        <param name="port" value="/dev/ttyUSB1" />
+    </node>
+    <node pkg="rosserial_python" name="serial_node_3" type="serial_node.py" respawn="true">
+        <param name="port" value="/dev/ttyUSB2" />
+    </node>
+    <node pkg="rosserial_python" name="serial_node_4" type="serial_node.py" respawn="true">
+        <param name="port" value="/dev/ttyUSB3" />
+    </node>
+    
+
+
+</launch>

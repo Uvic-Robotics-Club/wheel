@@ -11,13 +11,13 @@ void joy_to_wheel(const wheel::motor_velocities::ConstPtr& mtr){
 }
 
 int main(int argc, char **argv){
-	//Initialize ROS node
-	ros::init(argc,argv,"dumc");
-	ros::NodeHandle nh;
+  //Initialize ROS node
+  ros::init(argc,argv,"dumc");
+  ros::NodeHandle nh;
   ros::Publisher wheelPub = nh.advertise<std_msgs::String>("wheel/Diagnostics",10);
   ros::Subscriber joySub = nh.subscribe("wheel/Velocity",10,joy_to_wheel);
 
-  std::string usb_port = "/dev/ttyACM0";
+  std::string usb_port = "/dev/ttyUSB3";
   m1.init(usb_port);
   ros::Rate loop_rate(100);
   while (ros::ok()) {
