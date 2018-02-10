@@ -1,17 +1,16 @@
 <launch>
 
-    <node pkg="rosserial_python" name="serial_node_1" type="serial_node.py" respawn="true">
-        <param name="port" value="/dev/ttyUSB0" />
+    <node pkg="wheel" name="wheel_dmc" type="direct_usb_motor_control" required="true">
+        <param name="m4_usb_port" value="/dev/ttyUSB0" />
+        <param name="m2_usb_port" value="/dev/ttyUSB1" />
+        <param name="m3_usb_port" value="/dev/ttyUSB2" />
+        <param name="m1_usb_port" value="/dev/ttyUSB3" />
     </node>
-    <node pkg="rosserial_python" name="serial_node_2" type="serial_node.py" respawn="true">
-        <param name="port" value="/dev/ttyUSB1" />
+    
+    <node pkg="wheel" name="prog_2_dmc" type="prog_to_motor_teleop" required="true">
     </node>
-    <node pkg="rosserial_python" name="serial_node_3" type="serial_node.py" respawn="true">
-        <param name="port" value="/dev/ttyUSB2" />
-    </node>
-    <node pkg="rosserial_python" name="serial_node_4" type="serial_node.py" respawn="true">
-        <param name="port" value="/dev/ttyUSB3" />
-    </node>
+    
+    
     
 
 

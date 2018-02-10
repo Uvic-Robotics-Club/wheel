@@ -44,6 +44,9 @@ void setup() {
   myPID.SetOutputLimits(-255, 255);
   // turn on the pid
   myPID.SetMode(pidmode);
+  MotorNumber = 1+ digitalRead(Addr1)+digitalRead(Addr2)*2+digitalRead(Addr3)*4;
+  
+  
 }
 
 void loop() {
@@ -63,6 +66,8 @@ void loop() {
   analogWrite(PWM_B, Output2);
   
    if (thisTime - printTime > DisplayTime) {
+    Serial.print(MotorNumber);
+    Serial.print(",");
     Serial.print(Input);
     Serial.print(",");
     Serial.print(Output);

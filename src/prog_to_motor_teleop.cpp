@@ -33,9 +33,9 @@ void prog_to_wheel(const geometry_msgs::Twist::ConstPtr& twi){
   newMessage.motor_1_velocity = left;
   newMessage.motor_2_velocity = left;
   newMessage.motor_3_velocity = left;
-  newMessage.motor_4_velocity = right;
-  newMessage.motor_5_velocity = right;
-  newMessage.motor_6_velocity = right;
+  newMessage.motor_4_velocity = left;
+  newMessage.motor_5_velocity = left;
+  newMessage.motor_6_velocity = left;
 
   wheelPub.publish(newMessage);
 
