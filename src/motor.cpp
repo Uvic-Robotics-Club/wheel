@@ -36,19 +36,22 @@ USBMotor::USBMotor(){
   wheel_radius = 0.0508; // 2 inch radius
 }
 
-void USBMotor::init(std::string usb_port_input = "/dev/ttyACM0"){
-  usb_port = usb_port_input;
+void USBMotor::init(std::string usb_port_input){
+  usb_port = "/dev/ttyACM0";
+  ser;
   try{
 		ser.setPort(usb_port);
 		ser.setBaudrate(9600);
 		serial::Timeout to = serial::Timeout::simpleTimeout(1000);
 		ser.setTimeout(to);
+    ROS_ERROR_STREAM("ABOUT TO OPEN THE PORT " << usb_port);
 		ser.open();
     ROS_INFO_STREAM("Trying to open the motor at "<< usb_port);
     ros::Duration(0.5).sleep(); // sleep for half a second
   }
   catch(serial::IOException& e){
-		throw std::invalid_argument( "Unable to open the usb port (likely its the wrong usb name or its busy)" );
+    throw std::invalid_argument(e.what());
+		//throw std::invalid_argument( "Unable to open the usb port (likely its the wrong usb name or its busy)" );
 	}
 	if(ser.isOpen()){
 
